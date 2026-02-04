@@ -34,9 +34,9 @@ public class CorrelationIdMiddleware
     private static string GetCorrelationId(HttpContext context)
     {
         // 1. Check if we already have a correlation ID in the request headers
-        if (context.Request.Headers.TryGetValue(CorrelationIdHeader, out var correlationId) && !string.IsNullOrWhiteSpace(correlationId))
+        if (context.Request.Headers.TryGetValue(CorrelationIdHeader, out var correlationId) && !string.IsNullOrWhiteSpace(correlationId.ToString()))
         {
-            return correlationId;
+            return correlationId.ToString();
         }
 
         // 2. Check if we have an active Activity (OpenTelemetry)
