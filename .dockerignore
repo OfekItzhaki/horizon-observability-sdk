@@ -1,0 +1,14 @@
+# Git
+.git
+.gitignore
+
+# Build results
+**/bin
+**/obj
+**/out
+
+# IDEs
+.vs
+.idea
+*.suo
+*.user
