@@ -1,4 +1,4 @@
-# 🔌 Integration Guide: Horizon Observability
+# 🔌 Integration Guide: Horizon Platform
 
 This guide explains how to add professional-grade monitoring to your existing .NET 8 Web API in under 5 minutes.
 
@@ -19,7 +19,7 @@ Add the `Horizon.Observability` project to your solution.
 
 ```bash
 # In your terminal, from your project folder:
-dotnet add reference ../path/to/Horizon.Observability.csproj
+dotnet add reference ../path/to/Horizon.Platform.Sdk.csproj
 ```
 
 ## 🛠 Step 2: Configure Settings
@@ -43,7 +43,7 @@ Add this section to your `appsettings.json`. Replace `MyCoolService` with your a
 Open `Program.cs` and add the following **3 lines**:
 
 ```csharp
-using Horizon.Observability.Extensions;
+using Horizon.Platform.Sdk.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

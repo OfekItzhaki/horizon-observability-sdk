@@ -1,4 +1,4 @@
-using Horizon.Observability.Extensions;
+using Horizon.Platform.Sdk.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

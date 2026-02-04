@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Horizon.Observability;
+using Horizon.Platform.Sdk;
 
-namespace Horizon.Demo.API.Controllers;
+namespace Horizon.Platform.Demo.Controllers;
 
 [ApiController]
 [Route("[controller]")]

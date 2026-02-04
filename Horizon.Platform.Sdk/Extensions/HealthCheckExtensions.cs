@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace Horizon.Observability.Extensions;
+namespace Horizon.Platform.Sdk.Extensions;
 
 public static class HealthCheckExtensions
 {

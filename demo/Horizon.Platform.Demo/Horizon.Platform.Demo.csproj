@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Horizon.Observability\Horizon.Observability.csproj" />
+    <ProjectReference Include="..\..\Horizon.Platform.Sdk\Horizon.Platform.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,7 @@
-# Horizon.Observability SDK
+# Horizon Platform
 
 Typically, setting up "Enterprise Grade" observability in .NET takes days of configuring NuGet packages.
-**Horizon.Observability** does it in **one line of code**.
+**Horizon Platform** does it in **one line of code**.
 
 It bundles **OpenTelemetry**, **Serilog**, **Health Checks**, and **Problem Details** into a single, standardized platform.
 
@@ -19,7 +19,7 @@ It bundles **OpenTelemetry**, **Serilog**, **Health Checks**, and **Problem Deta
 Add the project reference or NuGet package:
 
 ```bash
-dotnet add package Horizon.Observability
+dotnet add package Horizon.Platform.Sdk
 ```
 
 ## 🛠 Usage
@@ -42,7 +42,7 @@ Control everything via configuration. No hardcoded URLs.
 ### 2. Startup (`Program.cs`)
 
 ```csharp
-using Horizon.Observability.Extensions;
+using Horizon.Platform.Sdk.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -70,8 +70,8 @@ docker-compose up -d --build
 ```
 
 ### Accessing the Tools:
-*   **Start Demo**: Right-click `start-demo.ps1` -> Run with PowerShell.
-*   **Stop Demo**: Right-click `stop-demo.ps1` -> Run with PowerShell.
+*   **Start Demo**: Right-click `demo/start-demo.ps1` -> Run with PowerShell.
+*   **Stop Demo**: Right-click `demo/stop-demo.ps1` -> Run with PowerShell.
 *   **Grafana (Dashboards):** [http://localhost:3001](http://localhost:3001) (admin/admin)
 *   **Seq (Logs):** [http://localhost:8081](http://localhost:8081)
 *   **Jaeger (Traces):** [http://localhost:16686](http://localhost:16686)

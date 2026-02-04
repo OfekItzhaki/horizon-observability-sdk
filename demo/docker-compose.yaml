@@ -5,13 +5,14 @@ services:
   demo-api:
     build:
       context: ..
-      dockerfile: Dockerfile
-    container_name: horizon-demo-api
+      dockerfile: demo/Dockerfile
+    container_name: horizon-platform-demo
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       # Point to the collector in Docker network
       - HorizonObservability__OtlpEndpoint=http://otel-collector:4317
       - HorizonObservability__SeqUrl=http://seq:5341
+      - HorizonObservability__ServiceName=Horizon.Platform.Demo
     ports:
       - "5000:8080"
     depends_on:
