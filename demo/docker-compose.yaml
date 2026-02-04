@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # 1. The Demo API (Simulating Traffic)
+  demo-api:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: horizon-demo-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # Point to the collector in Docker network
+      - HorizonObservability__OtlpEndpoint=http://otel-collector:4317
+      - HorizonObservability__SeqUrl=http://seq:5341
+    ports:
+      - "5000:8080"
+    depends_on:
+      - otel-collector
+      - seq
+
+  # 2. Seq (Logs)
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - "5341:80"        # Ingestion (HTTP)
+      - "8081:80"        # UI (Browser)
+
+  # 3. Jaeger (Traces)
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - "16686:16686"    # UI
+      - "4317:4317"      # OTLP (gRPC) Receiver
+
+  # 4. Prometheus (Metrics DB)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  # 5. Grafana (The Dashboard UI)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      # Mount provisioning configs
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    depends_on:
+      - prometheus
+      - jaeger
+
+  # 6. OpenTelemetry Collector (The Central Hub)
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    container_name: otel-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
+    ports:
+      - "4317:4317" # gRPC Receiver
+      - "4318:4318" # HTTP Receiver
