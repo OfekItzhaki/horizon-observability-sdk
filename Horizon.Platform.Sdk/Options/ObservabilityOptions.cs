@@ -1,4 +1,4 @@
-namespace Horizon.Observability.Options;
+namespace Horizon.Platform.Sdk.Options;
 
 public class ObservabilityOptions
 {

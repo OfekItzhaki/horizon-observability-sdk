@@ -1,11 +1,11 @@
 using System.Diagnostics;
 using System.Diagnostics.Metrics;
 
-namespace Horizon.Observability;
+namespace Horizon.Platform.Sdk;
 
 public static class HorizonMetrics
 {
-    private static readonly Meter Meter = new("Horizon.Observability", "1.0.0");
+    private static readonly Meter Meter = new("Horizon.Platform.Sdk", "1.0.0");
     
     // Example: Track total successful checkouts
     private static readonly Counter<long> CheckoutsCounter = Meter.CreateCounter<long>(

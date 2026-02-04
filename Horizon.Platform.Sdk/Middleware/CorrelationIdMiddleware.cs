@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Serilog.Context;
 
-namespace Horizon.Observability.Middleware;
+namespace Horizon.Platform.Sdk.Middleware;
 
 public class CorrelationIdMiddleware
 {

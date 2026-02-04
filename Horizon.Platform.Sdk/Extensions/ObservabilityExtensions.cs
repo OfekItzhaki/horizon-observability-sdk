@@ -1,5 +1,5 @@
-using Horizon.Observability.Middleware;
-using Horizon.Observability.Options;
+using Horizon.Platform.Sdk.Middleware;
+using Horizon.Platform.Sdk.Options;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +13,7 @@ using Serilog;
 using Serilog.Events;
 using Serilog.Formatting.Json;
 
-namespace Horizon.Observability.Extensions;
+namespace Horizon.Platform.Sdk.Extensions;
 
 public static class ObservabilityExtensions
 {
@@ -84,7 +84,7 @@ public static class ObservabilityExtensions
                     .AddAspNetCoreInstrumentation()
                     .AddHttpClientInstrumentation()
                     .AddRuntimeInstrumentation()
-                    .AddMeter("Horizon.Observability") // Custom Meter for business metrics
+                    .AddMeter("Horizon.Platform.Sdk") // Custom Meter for business metrics
                     .AddOtlpExporter(opt =>
                     {
                         opt.Endpoint = new Uri(options.OtlpEndpoint);

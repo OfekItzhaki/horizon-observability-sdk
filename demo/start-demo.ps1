@@ -1,5 +1,5 @@
-# Horizon Observability Demo Starter
-Write-Host "🚀 Starting Horizon Observability Stack..." -ForegroundColor Cyan
+# Horizon Platform Demo Starter
+Write-Host "🚀 Starting Horizon Platform Stack..." -ForegroundColor Cyan
 
 # 1. Check if Docker is running
 docker info >$null 2>&1
@@ -9,7 +9,7 @@ if ($LastExitCode -ne 0) {
 }
 
 # 2. Run Docker Compose
-docker-compose -f demo/docker-compose.yaml up -d --build
+docker-compose -f "$PSScriptRoot/docker-compose.yaml" up -d --build
 
 if ($LastExitCode -eq 0) {
     Write-Host "`n✅ Success! The stack is coming online." -ForegroundColor Green

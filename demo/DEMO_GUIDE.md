@@ -1,6 +1,6 @@
 # 📖 Quick Demo Guide
 
-Welcome to the **Horizon Observability** demo! This guide explains how to log in and what to look for.
+Welcome to the **Horizon Platform** demo! This guide explains how to log in and what to look for.
 
 ## 🔐 Credentials
 
@@ -21,11 +21,12 @@ Welcome to the **Horizon Observability** demo! This guide explains how to log in
 
 ### Using the command line
 ```powershell
-# Start
+# From the project root:
 docker-compose -f demo/docker-compose.yaml up -d --build
 
-# Stop
-docker-compose -f demo/docker-compose.yaml down
+# Or from inside the demo folder:
+cd demo
+docker-compose up -d --build
 ```
 
 ---
@@ -42,4 +43,4 @@ Once the containers are healthy, click these links to generate data:
 
 1.  **Grafana**: Search for the "Horizon Observability" dashboard. You'll see real-time RPS and Latency.
 2.  **Seq**: Filter by `CorrelationId` to see every log related to a single click.
-3.  **Jaeger**: Find `Horizon.Demo.API` and look for the specific spans.
+3.  **Jaeger**: Find `Horizon.Platform.Demo` and look for the specific spans.
