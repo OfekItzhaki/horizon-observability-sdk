@@ -25,16 +25,15 @@ services:
     environment:
       - ACCEPT_EULA=Y
     ports:
-      - "5341:80"        # Ingestion (HTTP)
-      - "8081:80"        # UI (Browser)
+      - "5341:80" # Ingestion (HTTP)
+      - "8081:80" # UI (Browser)
 
   # 3. Jaeger (Traces)
   jaeger:
     image: jaegertracing/all-in-one:latest
     container_name: jaeger
     ports:
-      - "16686:16686"    # UI
-      - "4317:4317"      # OTLP (gRPC) Receiver
+      - "16686:16686" # UI
 
   # 4. Prometheus (Metrics DB)
   prometheus:
@@ -50,7 +49,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
@@ -64,7 +63,7 @@ services:
   otel-collector:
     image: otel/opentelemetry-collector:latest
     container_name: otel-collector
-    command: ["--config=/etc/otel-collector-config.yaml"]
+    command: [ "--config=/etc/otel-collector-config.yaml" ]
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
